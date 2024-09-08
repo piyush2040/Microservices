@@ -1,6 +1,8 @@
 package com.micro.User.service.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,19 +12,20 @@ public class User {
 	
 	@Id
 	@Column(name = "ID")
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int userId;
 	@Column(name = "NAME", length = 15)
 	private String name;
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL",unique = true)
 	private String email;
 	@Column(name = "ABOUT")
 	private String about;
 	@Column(name = "ROLE",nullable = false)
 	private String role;
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getName() {
@@ -48,5 +51,10 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", about=" + about + ", role=" + role
+				+ "]";
 	}
 }
