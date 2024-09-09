@@ -1,4 +1,8 @@
 package com.micro.User.service.entities;
+import java.util.List;
+
+import org.springframework.data.annotation.Transient;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +26,8 @@ public class User {
 	private String about;
 	@Column(name = "ROLE",nullable = false)
 	private String role;
+	@Transient
+	private List<Rating> ratings;
 	public int getUserId() {
 		return userId;
 	}
