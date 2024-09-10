@@ -1,4 +1,4 @@
-package com.microservice.Hotel.HotelService;
+package com.micro.Hotel.Service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
