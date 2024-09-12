@@ -1,5 +1,6 @@
 package com.micro.Hotel.Service.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -20,6 +21,8 @@ public class Hotel {
 	@Id
 	private String id;
 	private String name;
+	@Column(unique = true)
+	private String email;
 	private String location;
 	private String about;
 }
