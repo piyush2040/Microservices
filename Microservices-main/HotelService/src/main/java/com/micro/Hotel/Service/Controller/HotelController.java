@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,6 +45,7 @@ public class HotelController {
 		return hotelService.updateHotel(hotel);
 	}
 	
+	@DeleteMapping("/deleteHotel")
 	public ResponseEntity<?> deleteHotel(String email)
 	{
 		return hotelService.deleteHotel(email);

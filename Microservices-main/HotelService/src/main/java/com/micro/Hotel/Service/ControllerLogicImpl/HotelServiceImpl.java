@@ -1,6 +1,7 @@
 package com.micro.Hotel.Service.ControllerLogicImpl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,11 @@ public class HotelServiceImpl implements HotelService{
 
 	@Override
 	public Hotel Create(Hotel hotel) {
-		// TODO Auto-generated method stub
+		
+		String hotelId = UUID.randomUUID().toString();
+		hotel.setID(hotelId);
+		
+		
 		return null;
 	}
 
