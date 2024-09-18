@@ -1,4 +1,4 @@
-package com.micro.service.Rating;
+package com.Micro.Service.Rating;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

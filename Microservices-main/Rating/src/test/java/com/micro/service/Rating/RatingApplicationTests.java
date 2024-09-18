@@ -1,4 +1,4 @@
-package com.micro.service.Rating;
+package com.Micro.Service.Rating;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

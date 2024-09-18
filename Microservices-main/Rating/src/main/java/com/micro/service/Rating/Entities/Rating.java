@@ -1,4 +1,7 @@
-package com.micro.User.service.entities;
+package com.Micro.Service.Rating.Entities;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +12,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Document("user_ratings")
 public class Rating {
+	@Id
 	private String ratingId;
 	private int UserId;
 	private String hotelId;
