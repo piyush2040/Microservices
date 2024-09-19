@@ -7,6 +7,6 @@ import com.Micro.Service.Rating.Entities.Rating;
 public interface RatingService {
 	Rating create(Rating rating);
 	List<Rating> getRatings();
-	List<Rating> getRatingByUserId();
-	List<Rating> getRatingByHotelId();
+	List<Rating> getRatingByUserId(int userId);
+	List<Rating> getRatingByHotelId(String hotelId);
 }

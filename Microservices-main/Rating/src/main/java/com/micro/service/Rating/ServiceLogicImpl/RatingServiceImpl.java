@@ -3,11 +3,13 @@ package com.Micro.Service.Rating.ServiceLogicImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.Micro.Service.Rating.Entities.Rating;
 import com.Micro.Service.Rating.Repositories.RatingRepository;
 import com.Micro.Service.Rating.ServiceLogic.RatingService;
 
+@Service
 public class RatingServiceImpl implements RatingService {
 
 	@Autowired
@@ -26,15 +28,15 @@ public class RatingServiceImpl implements RatingService {
 	}
 
 	@Override
-	public List<Rating> getRatingByUserId() {
+	public List<Rating> getRatingByUserId(int userId) {
 		// TODO Auto-generated method stub
-		return ratingRepository;
+		return ratingRepository.findByUserId(userId);
 	}
 
 	@Override
-	public List<Rating> getRatingByHotelId() {
+	public List<Rating> getRatingByHotelId(String hotelId) {
 		// TODO Auto-generated method stub
-		return null;
+		return ratingRepository.findByHotelId(hotelId);
 	}
 
 }
