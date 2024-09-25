@@ -1,6 +1,7 @@
 package com.Micro.Service.Rating.ServiceLogicImpl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class RatingServiceImpl implements RatingService {
 	@Override
 	public Rating create(Rating rating) {
 		// TODO Auto-generated method stub
+		String RatingId = UUID.randomUUID().toString();
+		rating.setId(RatingId);
 		return ratingRepository.save(rating);
 	}
 

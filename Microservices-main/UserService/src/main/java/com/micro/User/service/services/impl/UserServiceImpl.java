@@ -2,6 +2,7 @@ package com.micro.User.service.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,8 @@ public class UserServiceImpl implements UserService{
 	                    .body(new ResponseMessage("409", "User already exists."));
 	        }
 	        System.out.println("2");
+	        String UserId = UUID.randomUUID().toString();
+			user.setId(UserId);
 	        // Save the new user
 	        userRepository.save(user);
 	        
@@ -93,7 +96,7 @@ public class UserServiceImpl implements UserService{
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body(new ResponseMessage("404","User doesnot exists."));
 		}
-		user.setUserId(UserExist.get().getUserId());
+		user.setId(UserExist.get().getId());
 		userRepository.save(user);
 		
 		return ResponseEntity.status(HttpStatus.ACCEPTED)

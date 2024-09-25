@@ -1,8 +1,19 @@
 server:
-  port: 8083
+  port: 8083  # Service running on port 8083
 
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017
-      database: MicroService
+      uri: mongodb://localhost:27017  # MongoDB instance URL
+      database: MicroService           # Name of the database in MongoDB
+  application:
+    name: Hotel-Service               # Name of the Spring Boot service
+
+eureka:
+  instance:
+    prefer-ip-address: true           # Prefer IP address over hostname for registration
+  client:
+    fetch-registry: true              # Fetch service registry from the Eureka server
+    register-with-eureka: true        # Register this service with the Eureka server
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  #

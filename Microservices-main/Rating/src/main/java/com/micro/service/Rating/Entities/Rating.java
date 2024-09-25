@@ -15,7 +15,7 @@ import lombok.Setter;
 @Document("user_ratings")
 public class Rating {
 	@Id
-	private String ratingId;
+	private String Id;
 	private int UserId;
 	private String hotelId;
 	private int rating;
