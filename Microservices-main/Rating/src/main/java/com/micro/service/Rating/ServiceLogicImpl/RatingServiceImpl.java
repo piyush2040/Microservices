@@ -21,6 +21,7 @@ public class RatingServiceImpl implements RatingService {
 		// TODO Auto-generated method stub
 		String RatingId = UUID.randomUUID().toString();
 		rating.setId(RatingId);
+		System.out.println(rating);
 		return ratingRepository.save(rating);
 	}
 

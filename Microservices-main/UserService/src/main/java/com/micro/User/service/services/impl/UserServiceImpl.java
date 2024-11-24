@@ -1,5 +1,6 @@
 package com.micro.User.service.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import com.micro.User.service.entities.Rating;
 import com.micro.User.service.entities.ResponseMessage;
 import com.micro.User.service.entities.User;
 import com.micro.User.service.repositories.UserRepository;
@@ -21,6 +24,9 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	@Override
 	public ResponseEntity<?> saveUser(User user) {
@@ -78,7 +84,8 @@ public class UserServiceImpl implements UserService{
 		{
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new ResponseMessage("204", "User not exists"));
 		}
-		
+		System.out.println(user.get());
+		ArrayList ratings = restTemplate.getForObject("http://localhost:8083/rating/getRatingByUser/79d43838-edad-439a-bf9f-5e1b8bf60e65", ArrayList.class);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(user.get());
 	}
 

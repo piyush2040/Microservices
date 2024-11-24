@@ -25,6 +25,7 @@ public class RatingController {
 	@PostMapping("/addRating")
 	public ResponseEntity<Rating> create(@RequestBody Rating rating)
 	{
+		System.out.println(rating);
 		return ResponseEntity.status(HttpStatus.CREATED).body(ratingService.create(rating));
 	}
 	@GetMapping("/getAllRating")

@@ -34,6 +34,7 @@ public class UserController {
 
 	@GetMapping("/getUserById/{userEmail}")
 	public ResponseEntity<?> getUser(@PathVariable String userEmail) {
+		System.out.println("Service Called");
 		return userService.getUser(userEmail);
 	}
 
