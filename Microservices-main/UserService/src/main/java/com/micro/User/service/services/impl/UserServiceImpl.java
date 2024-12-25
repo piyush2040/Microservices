@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +18,6 @@ import com.micro.User.service.entities.ResponseMessage;
 import com.micro.User.service.entities.User;
 import com.micro.User.service.repositories.UserRepository;
 import com.micro.User.service.services.UserService;
-
 import jakarta.transaction.Transactional;
 
 @Service
@@ -27,6 +28,8 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Override
 	public ResponseEntity<?> saveUser(User user) {
@@ -78,7 +81,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public ResponseEntity<?> getUser(String userEmail) {
 		// TODO Auto-generated method stub
-		
+		try {
 		Optional<User> user = userRepository.findByEmail(userEmail);
 		if(user.isEmpty())
 		{
@@ -87,6 +90,12 @@ public class UserServiceImpl implements UserService{
 		System.out.println(user.get());
 		ArrayList ratings = restTemplate.getForObject("http://localhost:8083/rating/getRatingByUser/79d43838-edad-439a-bf9f-5e1b8bf60e65", ArrayList.class);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(user.get());
+		}
+		catch(Exception ex)
+		{
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+		}
 	}
 
 	@Override
