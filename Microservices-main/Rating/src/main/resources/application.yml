@@ -22,4 +22,4 @@ logging:
   level:
     root: DEBUG
     org.springframework.data.mongodb: DEBUG
-    com.netflix.discovery: INFO
+    com.netflix.discovery: OFF

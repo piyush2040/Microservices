@@ -24,3 +24,6 @@ eureka:
     register-with-eureka: true # Register this service with Eureka
     service-url:
       defaultZone: http://localhost:8761/eureka/  # Replace with your Eureka server URL
+logging:
+  pattern:
+    level: ERROR
